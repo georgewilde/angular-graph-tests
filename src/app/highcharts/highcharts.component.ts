@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { categories, hourlyValues, hours } from './data';
+import { categories, hourlyValues, similarHomes } from './data';
 
 @Component({
     selector: 'app-highcharts',
@@ -10,6 +10,7 @@ import { categories, hourlyValues, hours } from './data';
 export class HighchartsComponent {
     public donutOptions: Object;
     public horizontalStackedBarOptions: Object;
+    public similarHomesOptions: Object;
 
     constructor() {
         this.donutOptions = {
@@ -100,6 +101,38 @@ export class HighchartsComponent {
             credits: {
                 enabled: false
             },
+        };
+
+        this.similarHomesOptions = {
+            title: {
+                text: null
+            },
+            yAxis: {
+                title: {
+                    text: null
+                }
+            },
+            colors: [
+                '#ea1c0a',
+                '#e3e000',
+            ],
+            xAxis: {
+                type: 'datetime',
+                // units: [['month', [1]]],
+                dateTimeLabelFormats: {
+                    month: '%b'
+                }
+            },
+            plotOptions: {
+                series: {
+                    label: {
+                        connectorAllowed: false
+                    },
+                    pointStart: Date.UTC(2017, 0),
+                    pointIntervalUnit: 'month'
+                }
+            },
+            series: similarHomes,
         };
     }
 }
