@@ -1,11 +1,11 @@
 export const categories = [
     {
         'name': 'appliance',
-        'value': 5
+        'value': 15
     },
     {
         'name': 'cooking',
-        'value': 5
+        'value': 14
     },
     {
         'name': 'entertainment',
@@ -13,14 +13,14 @@ export const categories = [
     },
     {
         'name': 'heating',
-        'value': 5
+        'value': 7
     },
     {
         'name': 'hot_water',
-        'value': 5
+        'value': 9
     },
     {
         'name': 'lighting',
-        'value': 75
+        'value': 51
     }
 ];

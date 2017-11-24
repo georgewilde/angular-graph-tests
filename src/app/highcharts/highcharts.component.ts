@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { categories } from './data';
+import { categories, hourlyValues, hours } from './data';
 
 @Component({
     selector: 'app-highcharts',
@@ -8,10 +8,11 @@ import { categories } from './data';
     encapsulation: ViewEncapsulation.None
 })
 export class HighchartsComponent {
-    public options: Object;
+    public donutOptions: Object;
+    public horizontalStackedBarOptions: Object;
 
     constructor() {
-        this.options = {
+        this.donutOptions = {
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -54,11 +55,51 @@ export class HighchartsComponent {
                 }
             },
             series: [{
-                name: 'Brands',
+                name: 'Categories',
                 colorByPoint: true,
                 data: categories,
                 innerSize: '57%',
-            }]
+            }],
+            credits: {
+                enabled: false
+            },
+        };
+
+        this.horizontalStackedBarOptions = {
+            chart: {
+                type: 'bar',
+            },
+            title: {
+                text: null,
+            },
+            xAxis: {
+                type: 'datetime',
+                tickInterval: 1,
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: null,
+                }
+            },
+            colors: [
+                '#ea1c0a',
+                '#1ea2b1',
+            ],
+            legend: {
+                reversed: true,
+            },
+            plotOptions: {
+                series: {
+                    stacking: 'normal',
+                    pointStart: Date.UTC(2017, 11, 24),
+                    pointInterval: 60 * 60 * 1000,
+                }
+            },
+            series: hourlyValues,
+            credits: {
+                enabled: false
+            },
         };
     }
 }
